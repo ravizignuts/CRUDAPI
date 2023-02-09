@@ -15,6 +15,7 @@ use App\Http\Controllers\CarController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+//Hello Developer This is API For Basic Crud Operation.
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
