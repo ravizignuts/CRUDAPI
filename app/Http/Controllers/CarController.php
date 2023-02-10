@@ -67,8 +67,5 @@ class CarController extends Controller
         $car = Owner::findorFail($id)->car;
         return $car;
     }
-    public function ShowOwnerDetailsbyCarid($id){
-        $owner = Car::find($id)->owner;
-        return $owner;
-    }
+
 }

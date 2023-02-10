@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Car;
 use App\Models\Owner;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,9 @@ class OwnerController extends Controller
     }else{
         return ["Record"=>"Owner is Not Inserted"];
     }
-
-
-}
+    }
+    public function ShowOwnerDetailsbyCarid($id){
+        $owner = Car::find($id)->owner;
+        return $owner;
+    }
 }
