@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Owner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,14 +19,23 @@ class CarController extends Controller
         return $car;
     }
     public function InsertCarDetails(Request $request){
-        Car::insert([
-            'Name' => $request->Name,
-            'BodyStyle'=>$request->BodyStyle,
-            'Color'=>$request->Color,
-            'Manufacturer'=>$request->Manufacturer,
-            'Price'=>$request->Price,
+        $owner = Owner::find($request->owner_id);
+        // $car = Car::insert([
+        //     'Name' => $request->Name,
+        //     'BodyStyle'=>$request->BodyStyle,
+        //     'Color'=>$request->Color,
+        //     'Manufacturer'=>$request->Manufacturer,
+        //     'Price'=>$request->Price,
 
-        ]);
+        // ]);
+        $car = new Car();
+        $car->Name = $request->Name;
+        $car->BodyStyle=$request->BodyStyle;
+        $car->Color=$request->Color;
+        $car->Manufacturer=$request->Manufacturer;
+        $car->Price=$request->Price;
+        $res = $owner->car()->save($car);
+        // $car->store()->attach($owner->id);
         return ["Record"=>"Record Inserted Successfuly"];
     }
     public function UpdateCarDetails(Request $request){
@@ -52,6 +62,10 @@ class CarController extends Controller
         else{
             return ["Record"=>"Record is Not Deleted"];
         }
-
     }
+    public function ShowCarDetailsbyOwnerid($id){
+        $car = Owner::findorFail($id)->car;
+        return $car;
+    }
+
 }
