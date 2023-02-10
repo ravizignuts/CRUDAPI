@@ -9,11 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Project extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','programmer_id'];
-    public function programmer(){
+    protected $fillable = ['title', 'programmer_id'];
+    public function programmer()
+    {
+        //belongs to method
         return $this->belongsTo(Programmer::class,'programmer_id','id');
     }
-    public function client(){
-        return $this->hasMany(Client::class,'project_id','id');
+    public function client()
+    {
+        return $this->hasMany(Client::class, 'project_id', 'id');
     }
 }

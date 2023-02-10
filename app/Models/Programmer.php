@@ -16,7 +16,10 @@ class Programmer extends Model
         //return $this->hasOne(Project::class,'programmer_id','id');
 
         //One to Many Relationship with Project model
-        return $this->hasMany(Project::class,'programmer_id','id');
+        // return $this->hasMany(Project::class,'programmer_id','id');
+
+        //MANY TO MANY
+        return $this->belongsToMany(Project::class,'programmer_projects','programmer_id','project_id');
     }
     public function client(){
         //Has One Through Relation ship
@@ -29,4 +32,5 @@ class Programmer extends Model
         return $this->through('project')->has('client');
         //return $this->throughProject()->hasClient();
     }
+
 }
