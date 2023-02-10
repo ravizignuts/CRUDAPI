@@ -23,6 +23,10 @@ class Programmer extends Model
         // return $this->hasOneThrough(Client::class,Project::class,'programmer_id','project_id','id','id');
 
         //Has Many Through Relationship
-        return $this->hasManyThrough(Client::class,Project::class,'programmer_id','project_id','id','id');
+        //return $this->hasManyThrough(Client::class,Project::class,'programmer_id','project_id','id','id');
+
+        //=================if relationship is already define in the model you just need to call the method only=====================
+        return $this->through('project')->has('client');
+        //return $this->throughProject()->hasClient();
     }
 }

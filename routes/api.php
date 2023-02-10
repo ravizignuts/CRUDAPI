@@ -50,6 +50,7 @@ Route::controller(ProgrammerController::class)->prefix('programmer')->group(func
 Route::controller(ProjectController::class)->prefix('project')->group(function(){
     Route::post('insert','InsertProject');
     Route::get('showprogrammer/{id}','ShowProgrammer');
+    Route::get('showclient/{id}','ShowClient');
 });
 
 

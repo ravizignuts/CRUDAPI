@@ -14,6 +14,6 @@ class Project extends Model
         return $this->belongsTo(Programmer::class,'programmer_id','id');
     }
     public function client(){
-        return $this->hasOne(Client::class,'project_id','id');
+        return $this->hasMany(Client::class,'project_id','id');
     }
 }

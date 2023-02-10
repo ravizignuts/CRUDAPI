@@ -25,6 +25,10 @@ class ProjectController extends Controller
         $project = Project::find($id)->programmer;
         return $project;
     }
+    public function ShowClient($id){
+        $client = Project::find($id)->client;
+        return $client;
+    }
 
 
 }
