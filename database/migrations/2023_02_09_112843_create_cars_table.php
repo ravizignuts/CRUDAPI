@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('Color');
             $table->string('Manufacturer');
             $table->string('Price');
+            $table->unsignedBigInteger('owner_id');
+            $table->foreign('owner_id')->references('id')->on('owners');
             $table->timestamps();
         });
     }
